@@ -39,9 +39,9 @@ console.log(ei);
 //console.log(current_month);
 var config = {
     user: 'sa',
-    password: 'SunPlus7!',
+    password: '',
     server: 'localhost', 
-    database: 'SUNPLUSADV',
+    database: '',
     options: {
         encrypt: true // Use this if you're on Windows Azure
     }

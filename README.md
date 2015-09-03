@@ -24,3 +24,7 @@ Test LAN outside
 
 
 9.- Test and enjoy!
+
+
+
+Note: The example works with Infor Sunsystems 5.4

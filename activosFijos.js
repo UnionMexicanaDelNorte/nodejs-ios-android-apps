@@ -2,7 +2,25 @@ var http = require('http');
 var url  = require('url');
 var sql = require('mssql'); 
 
- var date = new Date();
+ 
+    
+var config = {
+    user: 'sa',
+    password: '',
+    server: 'localhost', 
+    database: '',
+    options: {
+        encrypt: true // Use this if you're on Windows Azure
+    }
+}
+http.createServer(function (req, res) {
+  	res.writeHead(200, {'Content-Type': 'text/plain'});
+ 	var url_parts = url.parse(req.url, true);
+    var query = url_parts.query;    
+	switch(parseInt(query.accion))
+	{
+		case 1:
+var date = new Date();
 var current_hour = date.getHours();
 
 var current_year= date.getFullYear();
@@ -31,28 +49,6 @@ var crypto = require('crypto'),
     hash.update(text);
     var ei = hash.digest('hex');
 
-    // print result
-    
-//console.log(decrypt(ei));
-console.log(ei);
-//console.log(current_day);
-//console.log(current_month);
-var config = {
-    user: 'sa',
-    password: '',
-    server: 'localhost', 
-    database: '',
-    options: {
-        encrypt: true // Use this if you're on Windows Azure
-    }
-}
-http.createServer(function (req, res) {
-  	res.writeHead(200, {'Content-Type': 'text/plain'});
- 	var url_parts = url.parse(req.url, true);
-    var query = url_parts.query;    
-	switch(parseInt(query.accion))
-	{
-		case 1:
       if(ei===query.ei)
       {
         sql.connect(config, function(err) {
